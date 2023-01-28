@@ -23,6 +23,7 @@ public class PaypalController {
 	@GetMapping("/")
 	public String home()
 	{
+		//return to home page
 		return "home";
 	}
 	
@@ -35,6 +36,7 @@ public class PaypalController {
 					order.getMethod(), order.getIntent(), order.getDescription(),
 					"http://localhost:9090"+CANCEL_URL, "http://localhost:9090"+SUCCESS_URL);
 
+			//check if the payment is approved
 			for(Links link:payment.getLinks())
 			{
 				if(link.getRel().equals("approval_url"))
